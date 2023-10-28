@@ -1,0 +1,19 @@
+CREATE TABLE Users (
+    UserID INT PRIMARY KEY,
+    Username VARCHAR(50),
+    Email VARCHAR(100),
+    Password VARCHAR(100),
+    Role VARCHAR(20),
+    ContactDetails VARCHAR(255)
+);
+
+CREATE TABLE Cars (
+    CarID INT PRIMARY KEY,
+    Make VARCHAR(50),
+    Model VARCHAR(50),
+    Year INT,
+    Mileage INT,
+    Price DECIMAL(10, 2),
+    SellerID INT,
+    FOREIGN KEY (SellerID) REFERENCES Users(UserID)
+);
