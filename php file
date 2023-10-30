@@ -1,0 +1,32 @@
+<?php
+$servername = "your_servername";
+$username = "your_username";
+$password = "your_password";
+$dbname = "your_dbname";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+$sqlUsers = "INSERT INTO Users (UserID, Username, Gender, Email, Password, Role, ContactDetails, PhoneNo, Address, Country)
+VALUES (1, 'JohnDoe', 'Male', 'johndoe@example.com', 'hashedpassword', 'user', 'Contact information', '1234567890', '123 Example St', 'CountryName')";
+
+if ($conn->query($sqlUsers) === TRUE) {
+    echo "Registered successfully";
+} else {
+    echo "Error: " . $sqlUsers . "<br>" . $conn->error;
+}
+$sqlCars = "INSERT INTO Cars (CarID, Make, Type, Brand, Model, Edition, Year, Insurance, Condition, Transmission, EngineCapacity, FuelType, RegistrationNo, District, Color, Weight, Mileage, Price, BasePrice, SellerID, Description)
+VALUES (1, 'Toyota', 'SUV', 'Toyota', 'Rav4', 'Limited', 2023, 'Full', 'New', 'Automatic', 2.5, 'Gasoline', 'ABC123', 'Example District', 'Red', 1500.00, 100, 30000.00, 28000.00, 1, 'Description of the car')";
+
+if ($conn->query($sqlCars) === TRUE) {
+    echo "successfully";
+} else {
+    echo "Error: " . $sqlCars . "<br>" . $conn->error;
+}
+
+$conn->close();
+?>
