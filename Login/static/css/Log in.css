@@ -1,0 +1,130 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: url(https://wallpaperaccess.com/full/4933388.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
+.login {
+  width: 350px;
+  height: 450px;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(3px);
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.login h1 {
+  text-align: center;
+  font-size: 35px;
+  font-weight: bold;
+  margin-bottom: 25px;
+}
+
+.box02 .input,
+.box03 .input {
+  display: flex;
+  width: auto;
+  height: 25px;
+  font-size: 18px;
+  padding-left: 30px;
+  margin-bottom: 30px;
+  background: transparent;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.6);
+}
+
+.box02 .input::placeholder,
+.box03 .input::placeholder {
+  font-size: 15px;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.box02 i,
+.box03 i {
+  position: absolute;
+  margin-top: 10px;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.box04 {
+  display: flex;
+  justify-content: left;
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.forgot a {
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.box05 button {
+  width: 100%;
+  height: 40px;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 30px 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: rgb(31, 29, 29);
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
+
+.box05 button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: aliceblue;
+}
+
+.box06 {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.btn button {
+  width: 130px;
+  height: 40px;
+  border: none;
+  border-radius: 20px;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: all 0.3s linear;
+  margin-top: 25px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.btn button.fb-btn:hover {
+  background-color: rgb(90, 90, 250);
+  color: aliceblue;
+}
+
+.btn button.google-btn:hover {
+  background-color: rgb(220, 130, 30);
+  color: aliceblue;
+}
