@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Add Vehicle Details</title>
-  <link rel="stylesheet" href="stylesIP.css">
+  <link rel="stylesheet" href="StylesIP.css">
 </head>
+
 <body>
   <header>
     <h1>Add Vehicle Details</h1>
@@ -36,28 +38,70 @@
         <input type="text" id="insurance" name="insurance" required>
       </div>
       <div class="form-group">
-        <label for="condition">Condition:</label>
-        <input type="text" id="condition" name="condition" required>
+        <label for="condition"><b>Condition:</b></label>
+        <select id="condition" name="condition" required>
+          <option value="">Select condition</option>
+          <option value="Brand new">Brand new</option>
+          <option value="Reconndition">Reconndition</option>
+          <option value="Second Hand">Second Hand</option>
+        </select>
       </div>
       <div class="form-group">
-        <label for="transmission">Transmission:</label>
-        <input type="text" id="transmission" name="transmission" required>
+        <label for="Transmission"><b>Transmission:</b></label>
+        <select id="Transmission" name="Transmission" required>
+          <option value="">Select Transmission</option>
+          <option value="Auto">Auto</option>
+          <option value="Manual">Manual</option>
+        </select>
       </div>
       <div class="form-group">
         <label for="engineCapacity">Engine Capacity:</label>
         <input type="text" id="engineCapacity" name="engineCapacity" required>
       </div>
       <div class="form-group">
-        <label for="fuelType">Fuel Type:</label>
-        <input type="text" id="fuelType" name="fuelType" required>
+        <label for="fuelType"><b>Fuel Type:</b></label>
+        <select id="fuelType" name="fuelType" required>
+          <option value="">Select Fuel type</option>
+          <option value="Petrol">Petrol</option>
+          <option value="Diesel">Diesel</option>
+          <option value="Electric">Electric</option>
+          <option value="Hybrid">Hybrid</option>
+        </select>
       </div>
       <div class="form-group">
         <label for="registrationNo">Registration No:</label>
         <input type="text" id="registrationNo" name="registrationNo" required>
       </div>
       <div class="form-group">
-        <label for="district">District:</label>
-        <input type="text" id="district" name="district" required>
+        <label for="district"><b>District:</b></label>
+        <select id="district" name="district" required>
+          <option value="">Select District</option>
+          <option value="Colombo">Colombo</option>
+          <option value="Gampaha">Gampaha</option>
+          <option value="Kalutara">Kalutara</option>
+          <option value="Kandy">Kandy</option>
+          <option value="Matale">Matale</option>
+          <option value="Nuwara Eliya">Nuwara Eliya</option>
+          <option value="Galle">Galle</option>
+          <option value="Matara">Matara</option>
+          <option value="Hambantota">Hambantota</option>
+          <option value="Jaffna">Jaffna</option>
+          <option value="Kilinochchi">Kilinochchi</option>
+          <option value="Mannar">Mannar</option>
+          <option value="Vavuniya">Vavuniya</option>
+          <option value="Mullaitivu">Mullaitivu</option>
+          <option value="Batticaloa">Batticaloa</option>
+          <option value="Ampara">Ampara</option>
+          <option value="Trincomalee">Trincomalee</option>
+          <option value="Kurunegala">Kurunegala</option>
+          <option value="Puttalam">Puttalam</option>
+          <option value="Anuradhapura">Anuradhapura</option>
+          <option value="Polonnaruwa">Polonnaruwa</option>
+          <option value="Badulla">Badulla</option>
+          <option value="Moneragala">Moneragala</option>
+          <option value="Ratnapura">Ratnapura</option>
+          <option value="Kegalle">Kegalle</option>
+        </select>
       </div>
       <div class="form-group">
         <label for="color">Color:</label>
@@ -87,7 +131,7 @@
     </form>
   </main>
   <footer>
-    <!-- Footer content here -->
   </footer>
 </body>
+
 </html>
