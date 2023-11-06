@@ -46,89 +46,88 @@ button {
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  margin-top: 20px;
 }
 
 button:hover {
   background-color: #555;
+  margin-top: 18px;
 }
 
 select {
-  width: 100%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   padding: 8px;
+  width: 100%;
   border: 1px solid #ccc;
   border-radius: 4px;
-  background-color: #fff; 
-  color: #333; 
-  cursor: pointer;
+  background: url('data:image/svg+xml;utf8,<svg fill="%23333" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z" fill="%23333"/><path d="M0 0h24v24H0z" fill="none"/></svg>') no-repeat right 8px center;
+  background-size: 16px;
 }
 
-select:after {
-  content: '\25BC'; 
-  position: absolute;
-  top: 30%;
-  right: 10px;
-  pointer-events: none; 
+select::-ms-expand {
+  display: none;
 }
 
-form {
-  width: 70%; 
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f7f7f7; 
-  border: 1px solid #ddd;
-  border-radius: 5px;
-}
-
-label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: bold;
-}
-
-input,
-textarea {
-  margin-bottom: 15px;
-  padding: 8px;
-}
-
-button[type="submit"] {
-  background-color: #333;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-button[type="submit"]:hover {
-  background-color: #555;
+select:focus {
+  outline: none;
+  border-color: #555;
 }
 
 .image-preview {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .image-preview img {
-    width: 200px;
-    height: auto;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+  width: 200px;
+  height: auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 .image-preview button {
-    display: block;
-    background: #e74c3c;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 5px 10px;
-    margin-top: 5px;
-    cursor: pointer;
-    transition: background 0.3s ease;
+  display: block;
+  background: #e74c3c;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-top: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
 .image-preview button:hover {
-    background: #c0392b;
+  background: #c0392b;
+}
+.card {
+  background-color: #f0f0f0; /* Change this hex color code to the color you prefer */
+  padding: 20px;
+  border-radius: 8px;
+  width: 40%;
+  margin: 0 auto;
+  margin-top: 100px;
+  animation: slide-in 1s forwards;
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+@keyframes slide-in {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.right-align {
+  float: right;
+}
+
+.previous-next-buttons {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
 }
