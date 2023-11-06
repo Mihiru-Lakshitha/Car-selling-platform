@@ -28,3 +28,20 @@ body {
 .user-info p {
     font-size: 18px;
 }
+.user-actions {
+    text-align: center;
+    padding: 20px;
+}
+.user-actions button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+.user-actions button.favorites {
+    background-color: #f7b731;
+}
