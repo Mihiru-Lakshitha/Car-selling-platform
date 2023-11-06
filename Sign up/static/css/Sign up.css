@@ -1,130 +1,169 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: sans-serif;
-}
-
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-image: url(https://wallpaperaccess.com/full/4933388.jpg);
-  background-position: center;
-  background-size: cover;
-}
-
-.login {
-  width: 350px;
-  height: 500px;
-  padding: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 20px;
-  backdrop-filter: blur(3px);
-  background-color: rgba(0, 0, 0, 0.1);
-}
-
-.login h1 {
-  text-align: center;
-  font-size: 35px;
-  font-weight: bold;
-  margin-bottom: 25px;
-}
-
-.box02 .input,
-.box04 .input,
-.box05 .input,
-.box03 .input {
-  display: flex;
-  width: auto;
-  height: 25px;
-  font-size: 18px;
-  padding-left: 30px;
-  margin-bottom: 30px;
-  background: transparent;
-  border: none;
-  outline: none;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.6);
-}
-
-.box02 .input::placeholder,
-.box03 .input::placeholder,
-.box05 .input::placeholder,
-.box04 .input::placeholder {
-  font-size: 15px;
-  font-weight: bold;
-  color: rgba(0, 0, 0, 0.6);
-}
-
-.box02 i,
-.box03 i,
-.box05 i, 
-.box04 i{
-  position: absolute;
-  margin-top: 10px;
-  transform: translateY(-50%);
-  font-size: 20px;
-  color: rgba(0, 0, 0, 0.8);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 
-
-.forgot a {
-  text-decoration: none;
-  font-size: 13px;
-  font-weight: bold;
+.full-page {
+    height: 100%;
+    width: 100%;
+    background-image: url('https://assets-global.website-files.com/63b6ad58a2acb53207682b15/63b6ad58a2acb584d2682cb4_MG%20Banner.jpg');
+    background-position: center;
+    background-size: cover;
+    position: absolute;
 }
 
-.box08 button {
-  width: 100%;
-  height: 40px;
-  border: none;
-  border-radius: 20px;
-  outline: none;
-  font-size: 20px;
-  font-weight: bold;
-  margin: 30px 0;
-  background-color: rgba(0, 0, 0, 0.3);
-  color: rgb(31, 29, 29);
-  cursor: pointer;
-  transition: all 0.3s linear;
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 20px 30px 50px 50px;
 }
 
-.box08 button:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-  color: aliceblue;
+nav {
+    flex: 1;
+    text-align: right;
 }
 
-.box09 {
-  text-align: center;
-  font-size: 18px;
-  font-weight: bold;
+nav ul {
+    display: inline-block;
+    list-style: none;
 }
 
-.btn button {
-  width: 130px;
-  height: 40px;
-  border: none;
-  border-radius: 20px;
-  margin: 0 5px;
-  cursor: pointer;
-  transition: all 0.3s linear;
-  margin-top: 25px;
-  font-size: 15px;
-  font-weight: bold;
+nav ul li {
+    display: inline-block;
+    margin-right: 70px;
 }
 
-.btn button.fb-btn:hover {
-  background-color: rgb(90, 90, 250);
-  color: aliceblue;
+nav ul li a {
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    font-family: sans-serif;
 }
 
-.btn button.google-btn:hover {
-  background-color: rgb(220, 130, 30);
-  color: aliceblue;
+nav ul li button {
+    font-size: 20px;
+    color: white;
+    outline: none;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-family: sans-serif;
+}
+
+nav ul li button:hover {
+    color: aqua;
+}
+
+nav ul li a:hover {
+    color: aqua;
+}
+
+a {
+    text-decoration: none;
+    color: palevioletred;
+    font-size: 40px;
+}
+
+/* Styling for the login form */
+#login-form {
+    display: none;
+}
+
+.form-box {
+    width: 380px;
+    height: 480px;
+    position: relative;
+    margin: 2% auto;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    overflow: hidden;
+}
+
+.button-box {
+    width: 220px;
+    margin: 35px auto;
+    position: relative;
+    box-shadow: 0 0 20px 9px #ff61241f;
+    border-radius: 30px;
+}
+
+.toggle-btn {
+    padding: 10px 30px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    outline: none;
+    position: relative;
+}
+
+#btn {
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 110px;
+    height: 100%;
+    background: #F3C693;
+    border-radius: 30px;
+    transition: 0.5s;
+}
+
+.input-group-login {
+    top: 150px;
+    position: absolute;
+    width: 280px;
+    transition: 0.5s;
+}
+
+.input-group-register {
+    top: 120px;
+    position: absolute;
+    width: 280px;
+    transition: 0.5s;
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px 0;
+    margin: 5px 0;
+    border-left: 0;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 1px solid #999;
+    outline: none;
+    background: transparent;
+    color: white;
+    font-size: 15px;
+}
+
+.submit-btn {
+    width: 85%;
+    padding: 10px 30px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    background: #F3C693;
+    border: 0;
+    outline: none;
+    border-radius: 30px;
+}
+
+.check-box {
+    margin: 30px 10px 34px 0;
+}
+
+span {
+    color: #777;
+    font-size: 12px;
+    bottom: 68px;
+    position: absolute;
+}
+
+#login {
+    left: 50px;
+}
+
+#register {
+    left: 450px;
 }
