@@ -127,6 +127,50 @@
         <label for="description">Description:</label>
         <textarea id="description" name="description" required></textarea>
       </div>
+      <div class="image-preview" id="imagePreview"></div>
+      <input id="files" type="file" multiple />
+
+      <script>
+        const previewContainer = document.getElementById('imagePreview');
+        const filesInput = document.getElementById('files');
+
+        filesInput.addEventListener('change', function () {
+          const files = this.files;
+
+          if (files.length > 5) {
+            alert('Please select up to 5 images');
+            this.value = '';
+            return;
+          }
+
+          if (files) {
+            Array.from(files).forEach(file => {
+              const reader = new FileReader();
+
+              reader.onload = () => {
+                const image = document.createElement('img');
+                image.src = reader.result;
+
+                const deleteButton = document.createElement('button');
+                deleteButton.innerHTML = 'Delete';
+
+                deleteButton.addEventListener('click', () => {
+                  previewContainer.removeChild(image);
+                  previewContainer.removeChild(deleteButton);
+                });
+
+                previewContainer.appendChild(image);
+                previewContainer.appendChild(deleteButton);
+              };
+
+              reader.readAsDataURL(file);
+            });
+          }
+        });
+      </script>
+      <button onclick="prevSection(2)">Previous</button>
+      <button onclick="submitForm()" class="right-align">Add Vehicle</button>
+      </div>
       <button type="submit">Add Vehicle</button>
     </form>
   </main>
