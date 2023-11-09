@@ -32,16 +32,26 @@ body {
     text-align: center;
     padding: 20px;
 }
-.user-actions button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 18px;
-    cursor: pointer;
+.user-actions .btn {
     margin-right: 10px;
 }
-.user-actions button.favorites {
-    background-color: #f7b731;
+.output {
+    display: none;
+    padding: 20px;
+}
+.modal-content {
+    max-width: 400px;
+    margin: 0 auto;
+}
+/* Center-align buttons and match input box sizes */
+#change-details-section .btn,
+#change-password-section .btn {
+    display: block;
+    margin: 10px auto;
+}
+/* Center-align buttons in the modal footer */
+.modal-footer {
+    text-align: center;
+    margin: 10px auto;
+    display: block;
 }
