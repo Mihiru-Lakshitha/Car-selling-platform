@@ -28,3 +28,30 @@ body {
 .user-info p {
     font-size: 18px;
 }
+.user-actions {
+    text-align: center;
+    padding: 20px;
+}
+.user-actions .btn {
+    margin-right: 10px;
+}
+.output {
+    display: none;
+    padding: 20px;
+}
+.modal-content {
+    max-width: 400px;
+    margin: 0 auto;
+}
+/* Center-align buttons and match input box sizes */
+#change-details-section .btn,
+#change-password-section .btn {
+    display: block;
+    margin: 10px auto;
+}
+/* Center-align buttons in the modal footer */
+.modal-footer {
+    text-align: center;
+    margin: 10px auto;
+    display: block;
+}
