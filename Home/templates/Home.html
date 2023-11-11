@@ -2,78 +2,66 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="homestyle.css"> <!-- Link to your CSS file -->
-    <link rel="stylesheet" href=""https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>CarMart - Your Car Selling Platform</title>
+    <title>Car Mart</title>
+    <link rel="stylesheet" href="sign.21.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    <header class="header">
-        <div class="logo">
-            <img src="https://static.vecteezy.com/system/resources/previews/016/449/785/non_2x/car-dealer-logo-icon-isolated-free-vector.jpg" alt="CarMart Logo">
+    <div class="full-page">
+        <div class="navbar">
+            <div>
+                <a href="website.html">Car Mart</a>
+            </div>
+            <nav>
+                <ul id="MenuItems">
+                    <li><button class="loginbtn" onclick="document.getElementById('login-form').style.display='block'" style="width:auto;">Home</button></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Login</a></li>
+                </ul>
+            </nav>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#Vehicles">Vehicles</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="#Login">Login</a></li>
-                <li><a href="#Review">Review</a></li>
-                <li><a href="#Featured">Featured</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <section class="welcome">
-        <div class="content">
-            <h1>Welcome to CarMart</h1>
+        <div id="login-form" class="login-page">
+            <div class="form-box">
+            <h1 data-text="Welcome">Welcome to Car Mart</h1>
             <p>Your destination for buying and selling cars.</p>
-            <a href="#about" class="btn">Learn More</a>
-        </div>
-    </section>
-
-    <section class="about" id="about">
-        <div class="content">
-            <p>CarMart is a trusted platform where you can find the best deals on new and used cars. We connect buyers and sellers to make the car buying process easy and convenient.</p>
-            <a href="#gallery" class="btn">View Cars</a>
-        </div>
-    </section>
-
-    <section class="gallery" id="gallery">
-        <h2>Featured Brands</h2>
-        <div class="brand-gallery">
-            <div class="brand">
-                <img src="https://clipart-library.com/2023/honda-car-emblem-logo-png-11662222427kqogsdhceq.png" alt="Honda">
-            </div>
-            <div class="brand">
-                <img src="https://e7.pngegg.com/pngimages/116/814/png-clipart-toyota-tundra-car-toyota-hilux-toyota-fj-cruiser-toyota-vigo-emblem-trademark-thumbnail.png" alt="Toyota">
-            </div>
-            <div class="brand">
-                <img src="https://e7.pngegg.com/pngimages/722/578/png-clipart-jaguar-cars-jaguar-e-type-jaguar-s-type-jaguar-animals-text-thumbnail.png" alt="Jaguar">
-            </div>
-            <div class="brand">
-                <img src="https://e7.pngegg.com/pngimages/250/321/png-clipart-bmw-logo-bmw-car-logo-bmw-logo-trademark-logo-thumbnail.png" alt="BMW">
-            </div>
-            <div class="brand">
-                <img src="https://e7.pngegg.com/pngimages/492/427/png-clipart-audi-logo-audi-r8-car-logo-audi-text-trademark-thumbnail.png" alt="Audi">
-            </div>
-            <div class="brand">
-                <img src="https://e7.pngegg.com/pngimages/542/839/png-clipart-mercedes-benz-w114-car-logo-brand-mercedes-benz-angle-emblem-thumbnail.png" alt="Benz">
+            <button type='submit' class='submit-btn'>Log in</button>
+             
+                <div class="icons">
+                        <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
+                        <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+                        <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
+                        <a href="#"><ion-icon name="logo-google"></ion-icon></a>
+                        <a href="#"><ion-icon name="logo-skype"></ion-icon></a>
+                    </div>
+                   
+                <script>
+                    var x = document.getElementById('login');
+                    var y = document.getElementById('register');
+                    var z = document.getElementById('btn');
+                    function register() {
+                        x.style.left = '-400px';
+                        y.style.left = '50px';
+                        z.style.left = '110px';
+                    }
+                    function login() {
+                        x.style.left = '50px';
+                        y.style.left = '450px';
+                        z.style.left = '0px';
+                    }
+                </script>
             </div>
         </div>
-    </section>
-
-    <section class="contact" id="contact">
-        <div class="content">
-            <p>If you have any questions or need assistance, feel free to contact us:</p>
-            <p>Email: info@carmart.com</p>
-            <p>Phone: +1-123-456-7890</p>
-            <div class="social-media">
-                <i class="fa fa-facebook" aria-hidden="true"></i>
-                <a href="#" class="fab fa-instagram"></a>
-            </div>
-        </div>
-    </section>
+    </div>
+    <script>
+        var modal = document.getElementById('login-form');
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
 </body>
 </html>
