@@ -1,0 +1,53 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.product-card {
+    display: flex;
+    max-width: 800px;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.photos {
+    flex: 1;
+}
+
+.photos img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.details {
+    flex: 1;
+    padding: 20px;
+}
+
+h2 {
+    color: #333;
+}
+
+.bidding {
+    margin-top: 20px;
+}
+
+input {
+    padding: 5px;
+    margin-right: 10px;
+}
+
+button {
+    padding: 8px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
