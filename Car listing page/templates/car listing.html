@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Listing</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>Car Listings</h1>
+    </header>
+
+    <div class="car-list">
+        <div class="car-card" id="car1">
+            <img src="car1.jpg" alt="Car 1" class="car-img">
+            <h2>Car 1</h2>
+            <p>Price: $30,000</p>
+            <button onclick="toggleDescription('car1')">Show Description</button>
+            <p class="car-description">A stylish and efficient car with advanced features.</p>
+        </div>
+
+        <div class="car-card" id="car2">
+            <img src="car2.jpg" alt="Car 2" class="car-img">
+            <h2>Car 2</h2>
+            <p>Price: $25,000</p>
+            <button onclick="toggleDescription('car2')">Show Description</button>
+            <p class="car-description">A compact car with excellent fuel efficiency.</p>
+        </div>
+
+        <!-- Add more cars as needed -->
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
