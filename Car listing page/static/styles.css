@@ -1,3 +1,4 @@
+/* CSS */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -40,10 +41,26 @@ header {
 }
 
 button {
-    background-color: #bdb76b ;
+    background-color: #bdb76b;
     color: #fff;
     padding: 8px 12px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #9c974e;
+}
+
+/* Style for the bid form */
+label,
+input {
+    display: block;
+    margin-top: 10px;
+}
+
+.bid-form {
+    display: none;
 }
