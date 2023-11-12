@@ -66,14 +66,18 @@
 
 .bidding button {
     padding: 8px;
-    background-color: #bdb76b;
+    background-color: #3498db; /* Use the same background color as the "View More Details" button */
     color: white;
     border: none;
     cursor: pointer;
+    border-radius: 5px; /* Add border-radius for rounded corners */
+    transition: background-color 0.3s ease; /* Add a smooth transition effect */
 }
 
 .bidding button:hover {
-    background-color: #45a049;
+    background-color: #2980b9; /* Change the background color on hover */
+}
+
 }
 
 #moreDetails {
@@ -83,6 +87,17 @@
 }
 
 #moreDetailsButton {
-    margin: 20px auto; /* Centered the button horizontally with top and bottom margins */
-    display: block; /* Ensures the button takes the full available width */
+    margin: 20px auto;
+    display: block;
+    padding: 10px 20px; /* Add padding to the button */
+    background-color: #3498db; /* Change the background color */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px; /* Add border-radius for rounded corners */
+    transition: background-color 0.3s ease; /* Add a smooth transition effect */
+}
+
+#moreDetailsButton:hover {
+    background-color: #2980b9; /* Change the background color on hover */
 }
