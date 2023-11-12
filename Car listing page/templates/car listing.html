@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Listing</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>Car Listings</h1>
+    </header>
+
+    <div class="car-list">
+        <div class="car-card" id="car1">
+            <img src="https://th.bing.com/th/id/OIP.u3z76UsyXzdbBBQCYQPhiAAAAA?pid=ImgDet&rs=1" alt="2018 Ford Mustang" class="car-img">
+            <h2>2018 Ford Mustang</h2>
+            <p>Price: Rs.30000000</p>
+            <button onclick="toggleDescription('car1')">Description of the Car</button>
+            <p class="car-description">A powerful performance, distinctive design, and modern features.</p>
+            <button onclick="showBidForm('car1')">Make a Bid</button>
+            <div class="bid-form" id="bidFormCar1" style="display:none;">
+                <label for="bidAmountCar1">Bid Amount:</label>
+                <input type="number" id="bidAmountCar1" class="bid-amount" placeholder="Enter your bid">
+                <button onclick="makeBid('car1')">Submit Bid</button>
+            </div>
+        </div>
+
+        <div class="car-card" id="car2">
+            <img src="https://www.ccarprice.com/products/Hyundai_Elantra_Hybrid_Blue_2023.jpg" alt="Hyundai Elantra Hybrid Blue" class="car-img">
+            <h2>Hyundai Elantra Hybrid Blue</h2>
+            <p>Price: Rs.40000000</p>
+            <button onclick="toggleDescription('car2')">Description of the Car</button>
+            <p class="car-description">A fuel-efficient and eco-friendly version of the popular Elantra sedan.</p>
+            <button onclick="showBidForm('car2')">Make a Bid</button>
+            <div class="bid-form" id="bidFormCar2" style="display:none;">
+                <label for="bidAmountCar2">Bid Amount:</label>
+                <input type="number" id="bidAmountCar2" class="bid-amount" placeholder="Enter your bid">
+                <button onclick="makeBid('car2')">Submit Bid</button>
+            </div>
+        </div>
+
+        <!-- Add more cars as needed -->
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
