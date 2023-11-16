@@ -1,4 +1,4 @@
-// JavaScript (script.js)
+
 function toggleDescription(carId) {
     var description = document.getElementById(carId).getElementsByClassName('car-description')[0];
     if (description.style.display === 'none' || description.style.display === '') {
@@ -18,14 +18,16 @@ function makeBid(carId) {
     var bidAmount = bidAmountInput.value;
 
     if (bidAmount.trim() === "") {
-        alert("Please enter a valid bid amount.");
+        alert("Please enter a bid amount.");
+    } else if (isNaN(bidAmount) || parseFloat(bidAmount) <= 0) {
+        alert("Please enter a valid bid amount greater than zero.");
     } else {
         alert('Bid placed for ' + carId + ' with amount Rs.' + bidAmount);
 
-        // Optionally, you can reset the input field after the bid is submitted
+       
         bidAmountInput.value = "";
 
-        // Hide the bid form after submission
+        
         var bidForm = document.getElementById(carId).getElementsByClassName('bid-form')[0];
         bidForm.style.display = 'none';
     }
