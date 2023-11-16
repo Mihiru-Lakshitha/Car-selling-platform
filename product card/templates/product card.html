@@ -10,9 +10,13 @@
 
 <div class="product-card">
     <div class="photos">
-        <img src="https://www.cnet.com/a/img/resize/d44025be0d94fb9865ae024140d5fddf669485e2/hub/2017/06/07/fd580beb-fb7f-4c98-acc0-df4302a8b19b/2017-honda-civic-type-r-vin-01-1.jpg?auto=webp&width=1200" alt="Car Photo 1">
-        <img src="https://www.carscoops.com/wp-content/uploads/2020/02/2020-Honda-Civic-Type-R-105.jpg" alt="Car Photo 2">
-        <!-- Add more photos as needed -->
+        <div class="image-container">
+            <img src="https://www.cnet.com/a/img/resize/d44025be0d94fb9865ae024140d5fddf669485e2/hub/2017/06/07/fd580beb-fb7f-4c98-acc0-df4302a8b19b/2017-honda-civic-type-r-vin-01-1.jpg?auto=webp&width=1200" alt="Car Photo 1">
+            <div class="nav-buttons">
+                <button onclick="prevImage()">&#9665;</button> <!-- Left arrow -->
+                <button onclick="nextImage()">&#9655;</button> <!-- Right arrow -->
+            </div>
+        </div>
     </div>
     <div class="details">
         <h2>2017 Honda Civic Type R</h2>
@@ -23,6 +27,10 @@
             <label for="bidAmount">Your Bid:</label>
             <input type="number" id="bidAmount" placeholder="Enter your bid">
             <button onclick="placeBid()">Place Bid</button>
+        </div>
+        <button id="moreDetailsButton" onclick="toggleDetails()">View More Details</button>
+        <div id="moreDetails">
+            <p>The one performed by MotorTrend reveals that the 2023 Type R goes from 0 to 60 mph in 5.3 seconds and runs the quarter mile in 13.9 seconds at 104.2 mph. The model is also expected to be capable of hitting a top speed of 170 mph. However, there is no doubt that the new Civic Type R is a very fast car.</p>
         </div>
     </div>
 </div>
