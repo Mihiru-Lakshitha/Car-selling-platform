@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/CSS.css' %}">
+    <title>Car Mart</title>
+    <style>
+        body {
+            background-color: white;
+        }
+        .background-image {
+            background-image: url('https://hips.hearstapps.com/hmg-prod/images/lambo-1596031276.gif');
+            background-size: cover;
+            background-repeat: no-repeat;
+            width: 100%; /* Adjust the percentage to zoom out more or less */
+            height: 100%; /* Adjust the percentage to zoom out more or less */
+            position: absolute;
+            opacity: 1; /* Adjust the opacity as needed */
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="background-image"></div>
+
+<div id="container" class="container">
+    <!-- FORM SECTION -->
+    <div class="row">
+        <!-- SIGN UP -->
+        <div class="col align-items-center flex-col sign-up">
+            <div class="form-wrapper align-items-center">
+                <div class="form sign-up">
+                    <!-- Inside your form tag in login.html -->
+                    {% if message %}
+                        <div>{{ message }}</div>
+                    {% endif %}
+            
+                    <form action="{% url 'register' %}" method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+
+                        <!-- Username Field -->
+                        <div class="input-group">
+                            <i class='bx bxs-user'></i>
+                            <input class="form-control" type="text" name="username" placeholder="Username" required>
+                        </div>
+
+                        <!-- Email Field -->
+                        <div class="input-group">
+                            <i class='bx bx-mail-send'></i>
+                            <input class="form-control" type="email" name="email" placeholder="Email" required>
+                        </div>
+
+                        <!-- Phone Number Field -->
+                        <div class="input-group">
+                            <i class='bx bxs-lock-alt'></i>
+                            <input class="form-control" type="tel" name="PhoneNo" placeholder="Mobile Number" required>
+                        </div>
+
+                        <!-- Zipcode Field -->
+                        <div class="input-group">
+                            <i class='bx bxs-lock-alt'></i>
+                            <input class="form-control" type="text" name="zipcode" placeholder="Zip code" required>
+                        </div>
+
+                        <!-- Password Field -->
+                        <div class="input-group">
+                            <i class='bx bxs-lock-alt'></i>
+                            <input class="form-control" type="password" name="password" placeholder="Password" required>
+                        </div>
+
+                        <!-- Confirm Password Field -->
+                        <div class="input-group">
+                            <i class='bx bxs-lock-alt'></i>
+                            <input class="form-control" type="password" name="confirmation" placeholder="Confirm password" required>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="input-group">
+                            <input class="btn btn-primary" type="submit" value="Register">
+                        </div>
+                    </form>
+
+                    <p>
+                        <span>
+                            Already have an account?
+                        </span>
+                        <b onclick="toggle()" class="pointer">
+                            Sign in here
+                        </b>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- END SIGN UP -->
+        <!-- SIGN IN -->
+        <!-- Login/templates/Login/Login.html -->
+        <div class="col align-items-center flex-col sign-in">
+            <div class="form-wrapper align-items-center">
+                <div class="form sign-in">
+                    {% if message %}
+                        <div>{{ message }}</div>
+                    {% endif %}
+                    <form action="{% url 'login' %}" method="post">
+                        {% csrf_token %}
+                        <div class="input-group">
+                            <i class='bx bxs-user'></i>
+                            <input class="form-control" type="text" name="username" placeholder="Username" required>
+                        </div>
+                        <div class="input-group">
+                            <i class='bx bxs-lock-alt'></i>
+                            <input class="form-control" type="password" name="password" placeholder="Password" required>
+                        </div>
+                        <div class="input-group">
+                            <input class="btn btn-primary" type="submit" value="Login">
+                        </div>
+                    </form>
+                    <p>
+                        <b>
+                            Forgot password?
+                        </b>
+                    </p>
+                    <p>
+                        <span>
+                            Don't have an account?
+                        </span>
+                        <b onclick="toggle()" class="pointer">
+                            Sign up here
+                        </b>
+                    </p>
+                    {% if error_message %}
+                        <p class="error-message">{{ error_message }}</p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-wrapper">
+            </div>
+        </div>
+
+        <!-- END SIGN IN -->
+    </div>
+    <!-- END FORM SECTION -->
+    <!-- CONTENT SECTION -->
+    <div class="row content-row">
+        <!-- SIGN IN CONTENT -->
+        <div class="col align-items-center flex-col">
+            <div class="text sign-in">
+                <h2>
+                    Welcome
+                </h2>
+
+            </div>
+            <div class="img sign-in">
+
+            </div>
+        </div>
+        <!-- END SIGN IN CONTENT -->
+        <!-- SIGN UP CONTENT -->
+        <div class="col align-items-center flex-col">
+            <div class="img sign-up">
+
+            </div>
+            <div class="text sign-up">
+                <h2>
+                    Join with us
+                </h2>
+
+            </div>
+        </div>
+        <!-- END SIGN UP CONTENT -->
+    </div>
+    <!-- END CONTENT SECTION -->
+</div>
+<script src="{% static 'js/JS.js' %}"></script>
+</body>
+</html>
