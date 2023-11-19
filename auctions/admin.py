@@ -6,7 +6,7 @@ admin.site.site_header = "Auction's site Administration"
 
 
 class AuctionListingAdmin(admin.ModelAdmin):
-    list_display = ("title", "user", "price", "starting_bid", "created_at")
+    list_display = ("title", "user", "starting_bid", "created_at", 'brand', 'model', 'edition', 'year', 'condition', 'no_of_owners', 'transmission', 'engine_capacity', 'fuel_type', 'weight', 'mileage', 'district', 'description')
 
 
 class BidAdmin(admin.ModelAdmin):
