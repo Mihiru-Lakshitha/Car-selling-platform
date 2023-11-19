@@ -11,26 +11,137 @@ class AuctionListingForm(forms.Form):
         }
         )
     )
-    description = forms.CharField(
-        label='Description',
-        required=True,
-        widget=forms.Textarea(attrs={
+    
+    
+    category = forms.CharField(
+        label='Category',
+        required=False,
+        widget=forms.TextInput(attrs={
             'class': 'form-control form-group',
-            'placeholder': 'Tell more about the product',
-            'rows': '3'
+            'autocomplete': 'on',
+            'placeholder': 'Category (optional)'
         }
         )
     )
-    price = forms.DecimalField(
-        label='Price',
+    
+    brand = forms.CharField(
+        label='Brand',
         required=False,
-        initial=0.00,
+        widget=forms.TextInput(attrs={
+            'class': 'form-control form-group',
+            'autocomplete': 'on',
+            'placeholder': 'Category (optional)'
+        }
+        )
+    )
+    
+    model = forms.CharField(
+        label='Model',
+        required=False,
+        widget=forms.TextInput(attrs={
+            'class': 'form-control form-group',
+            'autocomplete': 'on',
+            'placeholder': 'Category (optional)'
+        }
+        )
+    )
+    # Additional Fields
+    edition = forms.CharField(
+        label='Edition',
+        required=False,
+        widget=forms.TextInput(attrs={
+            'class': 'form-control form-group',
+            'placeholder': 'Edition (optional)'
+        }
+        )
+    )
+    year = forms.IntegerField(
+        label='Year',
+        required=False,
         widget=forms.NumberInput(attrs={
             'class': 'form-control form-group',
-            'placeholder': 'Estimated price (optional)',
+            'placeholder': 'Year (optional)'
+        }
+        )
+    )
+    condition = forms.CharField(
+        label='Condition',
+        required=False,
+        widget=forms.TextInput(attrs={
+            'class': 'form-control form-group',
+            'placeholder': 'Condition (optional)'
+        }
+        )
+    )
+    no_of_owners = forms.IntegerField(
+        label='Number of Owners',
+        required=False,
+        widget=forms.NumberInput(attrs={
+            'class': 'form-control form-group',
+            'placeholder': 'Number of Owners (optional)'
+        }
+        )
+    )
+    transmission = forms.CharField(
+        label='Transmission',
+        required=False,
+        widget=forms.TextInput(attrs={
+            'class': 'form-control form-group',
+            'placeholder': 'Transmission (optional)'
+        }
+        )
+    )
+    engine_capacity = forms.DecimalField(
+        label='Engine Capacity',
+        required=False,
+        widget=forms.NumberInput(attrs={
+            'class': 'form-control form-group',
+            'placeholder': 'Engine Capacity (optional)',
+            'min': '0.1',
+            'max': '999.9',
+            'step': '0.1'
+        }
+        )
+    )
+    fuel_type = forms.CharField(
+        label='Fuel Type',
+        required=False,
+        widget=forms.TextInput(attrs={
+            'class': 'form-control form-group',
+            'placeholder': 'Fuel Type (optional)'
+        }
+        )
+    )
+    weight = forms.DecimalField(
+        label='Weight',
+        required=False,
+        widget=forms.NumberInput(attrs={
+            'class': 'form-control form-group',
+            'placeholder': 'Weight (optional)',
+            'min': '1',
+            'max': '99999',
+            'step': '1'
+        }
+        )
+    )
+    mileage = forms.DecimalField(
+        label='Mileage',
+        required=False,
+        widget=forms.NumberInput(attrs={
+            'class': 'form-control form-group',
+            'placeholder': 'Mileage (optional)',
             'min': '0.01',
-            'max': '999999999.99',
+            'max': '999999.99',
             'step': '0.01'
+        }
+        )
+    )
+    district = forms.CharField(
+        label='District',
+        required=False,
+        widget=forms.TextInput(attrs={
+            'class': 'form-control form-group',
+            'placeholder': 'District (optional)'
         }
         )
     )
@@ -46,16 +157,7 @@ class AuctionListingForm(forms.Form):
         }
         )
     )
-    category = forms.CharField(
-        label='Category',
-        required=False,
-        widget=forms.TextInput(attrs={
-            'class': 'form-control form-group',
-            'autocomplete': 'on',
-            'placeholder': 'Category (optional)'
-        }
-        )
-    )
+    
     image_url = forms.URLField(
         label='Image URL',
         required=False,
@@ -66,6 +168,7 @@ class AuctionListingForm(forms.Form):
         }
         )
     )
+
 
     def clean_starting_bid(self):
         amount = float(self.cleaned_data.get('starting_bid'))
@@ -96,4 +199,3 @@ class CommentForm(forms.Form):
         if len(text) > 0:
             return text
         return self.errors
-
