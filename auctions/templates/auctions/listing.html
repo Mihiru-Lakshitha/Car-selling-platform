@@ -17,7 +17,22 @@
 
                     <div class="project-info-box">
                         <p class="pt-4 pb-2 border-bottom"><b>Author: </b> {{ auction.user }}</p>
-                        <p class="pt-1 pb-2 border-bottom "><b>Current Bid: </b><span class="text-primary">
+                        <p class="pt-1 pb-2 border-bottom"><b>Current Bid: </b><span class="text-primary">{{ auction.starting_bid }}</span></p>
+                        <p class="pt-1 pb-2 border-bottom"><b>Brand: </b>{{ auction.brand }}</p>
+                        <p class="pt-1 pb-2 border-bottom"><b>Model: </b>{{ auction.model }}</p>
+                        <p class="pt-1 pb-2 border-bottom"><b>Edition: </b>{{ auction.edition }}</p>
+                        <p class="pt-1 pb-2 border-bottom"><b>Year: </b>{{ auction.year }}</p>
+                        <p class="pt-1 pb-2 border-bottom"><b>Condition: </b>{{ auction.condition }}</p>
+                        <p class="pt-1 pb-2 border-bottom"><b>Number of Owners: </b>{{ auction.no_of_owners }}</p>
+                        <p class="pt-1 pb-2 border-bottom"><b>Transmission: </b>{{ auction.transmission }}</p>
+                        <p class="pt-1 pb-2 border-bottom"><b>Engine Capacity: </b>{{ auction.engine_capacity }}</p>
+                        <p class="pt-1 pb-2 border-bottom"><b>Fuel Type: </b>{{ auction.fuel_type }}</p>
+                        <p class="pt-1 pb-2 border-bottom"><b>Weight: </b>{{ auction.weight }}</p>
+                        <p class="pt-1 pb-2 border-bottom"><b>Mileage: </b>{{ auction.mileage }}</p>
+                        <p class="pt-1 pb-2 border-bottom"><b>District: </b>{{ auction.district }}</p>
+                        <p class="pt-1 pb-2 border-bottom"><b>Description: </b>{{ auction.description }}</p>
+                    </div>
+
                         ${{ bid.amount }}</span>
                         <p>
                             {% if auction.price %}
