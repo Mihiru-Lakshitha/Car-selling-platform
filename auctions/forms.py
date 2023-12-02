@@ -7,7 +7,7 @@ class AuctionListingForm(forms.Form):
         required=True,
         widget=forms.TextInput(attrs={
             'class': 'form-control form-group',
-            'placeholder': 'Give it a title'
+            'placeholder': 'Title'
         }
         )
     )
@@ -19,7 +19,7 @@ class AuctionListingForm(forms.Form):
         widget=forms.TextInput(attrs={
             'class': 'form-control form-group',
             'autocomplete': 'on',
-            'placeholder': 'Category (optional)'
+            'placeholder': 'Category'
         }
         )
     )
@@ -30,7 +30,7 @@ class AuctionListingForm(forms.Form):
         widget=forms.TextInput(attrs={
             'class': 'form-control form-group',
             'autocomplete': 'on',
-            'placeholder': 'Category (optional)'
+            'placeholder': 'Brand'
         }
         )
     )
@@ -41,119 +41,145 @@ class AuctionListingForm(forms.Form):
         widget=forms.TextInput(attrs={
             'class': 'form-control form-group',
             'autocomplete': 'on',
-            'placeholder': 'Category (optional)'
+            'placeholder': 'Model'
         }
         )
     )
-    # Additional Fields
     edition = forms.CharField(
         label='Edition',
         required=False,
         widget=forms.TextInput(attrs={
             'class': 'form-control form-group',
-            'placeholder': 'Edition (optional)'
+            'placeholder': 'Edition'
         }
         )
     )
-    year = forms.IntegerField(
+    year = forms.CharField(
         label='Year',
         required=False,
-        widget=forms.NumberInput(attrs={
+        widget=forms.TextInput(attrs={
             'class': 'form-control form-group',
-            'placeholder': 'Year (optional)'
+            'placeholder': 'Year'
         }
         )
     )
     condition = forms.CharField(
-        label='Condition',
+    label='Condition',
+    required=False,
+    widget=forms.Select(choices=[
+        ('Select condition', 'Select condition'),
+        ('Brand new', 'Brand new'),
+        ('Recondition', 'Recondition'),
+        ('Second Hand', 'Second Hand'),
+    ], attrs={
+        'class': 'form-control form-group',
+    })
+)
+
+    no_of_owners = forms.CharField(
+        label='Number of Owners',
         required=False,
         widget=forms.TextInput(attrs={
             'class': 'form-control form-group',
-            'placeholder': 'Condition (optional)'
-        }
-        )
-    )
-    no_of_owners = forms.IntegerField(
-        label='Number of Owners',
-        required=False,
-        widget=forms.NumberInput(attrs={
-            'class': 'form-control form-group',
-            'placeholder': 'Number of Owners (optional)'
+            'placeholder': 'Number of Owners'
         }
         )
     )
     transmission = forms.CharField(
-        label='Transmission',
-        required=False,
-        widget=forms.TextInput(attrs={
-            'class': 'form-control form-group',
-            'placeholder': 'Transmission (optional)'
-        }
-        )
-    )
-    engine_capacity = forms.DecimalField(
+    label='Transmission',
+    required=False,
+    widget=forms.Select(choices=[
+        ('Select Transmission','Select Transmission'),
+        ('Auto', 'Auto'),
+        ('Manual', 'Manual'),
+        ('Both', 'Both'),
+    ],attrs={
+        'class': 'form-control form-group',
+    })
+)
+    engine_capacity = forms.CharField(
         label='Engine Capacity',
         required=False,
-        widget=forms.NumberInput(attrs={
+        widget=forms.TextInput(attrs={
             'class': 'form-control form-group',
-            'placeholder': 'Engine Capacity (optional)',
-            'min': '0.1',
-            'max': '999.9',
-            'step': '0.1'
+            'placeholder': 'Engine Capacity',
         }
         )
     )
-    fuel_type = forms.CharField(
-        label='Fuel Type',
+
+    fuelType = forms.CharField(
+    label='Fuel Type',
+    required= False,
+    widget=forms.Select(choices=[
+    ('Select Fuel Type','Select Fuel Type'),
+    ('Petrol', 'Petrol'),
+    ('Diesel', 'Diesel'),
+    ('Electric', 'Electric'),
+    ('Hybrid', 'Hybrid'),
+    ],attrs={
+        'class': 'form-control form-group',
+    })
+    )
+    weight = forms.CharField(
+        label='Weight',
         required=False,
         widget=forms.TextInput(attrs={
             'class': 'form-control form-group',
-            'placeholder': 'Fuel Type (optional)'
+            'placeholder': 'Weight',
         }
         )
     )
-    weight = forms.DecimalField(
-        label='Weight',
-        required=False,
-        widget=forms.NumberInput(attrs={
-            'class': 'form-control form-group',
-            'placeholder': 'Weight (optional)',
-            'min': '1',
-            'max': '99999',
-            'step': '1'
-        }
-        )
-    )
-    mileage = forms.DecimalField(
+    mileage = forms.CharField(
         label='Mileage',
         required=False,
-        widget=forms.NumberInput(attrs={
+        widget=forms.TextInput(attrs={
             'class': 'form-control form-group',
-            'placeholder': 'Mileage (optional)',
-            'min': '0.01',
-            'max': '999999.99',
-            'step': '0.01'
+            'placeholder': 'Mileage',
         }
         )
     )
     district = forms.CharField(
         label='District',
         required=False,
-        widget=forms.TextInput(attrs={
+        widget=forms.Select(choices=[
+        ('Select District','Select District'),
+        ('Colombo', 'Colombo'),
+        ('Gampaha', 'Gampaha'),
+        ('Kalutara', 'Kalutara'),
+        ('Kandy', 'Kandy'),
+        ('Matale', 'Matale'),
+        ('Nuwara Eliya', 'Nuwara Eliya'),
+        ('Galle', 'Galle'),
+        ('Matara', 'Matara'),
+        ('Hambantota', 'Hambantota'),
+        ('Jaffna', 'Jaffna'),
+        ('Kilinochchi', 'Kilinochchi'),
+        ('Mannar', 'Mannar'),
+        ('Vavuniya', 'Vavuniya'),
+        ('Mullaitivu', 'Mullaitivu'),
+        ('Batticaloa', 'Batticaloa'),
+        ('Ampara', 'Ampara'),
+        ('Trincomalee', 'Trincomalee'),
+        ('Kurunegala', 'Kurunegala'),
+        ('Puttalam', 'Puttalam'),
+        ('Anuradhapura', 'Anuradhapura'),
+        ('Polonnaruwa', 'Polonnaruwa'),
+        ('Badulla', 'Badulla'),
+        ('Moneragala', 'Moneragala'),
+        ('Ratnapura', 'Ratnapura'),
+        ('Kegalle', 'Kegalle'),
+            
+        ],attrs={
             'class': 'form-control form-group',
-            'placeholder': 'District (optional)'
         }
         )
     )
-    starting_bid = forms.DecimalField(
+    starting_bid = forms.CharField(
         label='Starting Bid',
         required=True,
-        widget=forms.NumberInput(attrs={
+        widget=forms.TextInput(attrs={
             'class': 'form-control form-group',
             'placeholder': 'Starting bid',
-            'min': '0.01',
-            'max': '99999999999.99',
-            'step': '0.01'
         }
         )
     )
@@ -161,10 +187,9 @@ class AuctionListingForm(forms.Form):
     image_url = forms.URLField(
         label='Image URL',
         required=False,
-        initial='https://user-images.githubusercontent.com/52632898/161646398-6d49eca9-267f-4eab-a5a7-6ba6069d21df.png',
         widget=forms.TextInput(attrs={
             'class': 'form-control form-group',
-            'placeholder': 'Image URL (optional)',
+            'placeholder': 'Upload your vehicle image to Google Drive and paste the link',
         }
         )
     )
