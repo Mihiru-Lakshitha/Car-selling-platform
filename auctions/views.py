@@ -15,6 +15,8 @@ def index(request):
         "listings": AuctionListing.objects.all().order_by('-created_at')
     })
 
+def user_profile(request):
+    return render(request, 'auctions/user.html') 
 
 def login_view(request):
     if request.method == "POST":
@@ -41,7 +43,6 @@ def logout_view(request):
     return HttpResponseRedirect(reverse("index"))
 
 
-
 def register(request):
     if request.method == "POST":
         username = request.POST["username"]
@@ -59,9 +60,7 @@ def register(request):
 
         # Attempt to create new user
         try:
-            user = User.objects.create_user(username, email=email, password=password)
-            user.phone = phone
-            user.zip = zip
+            user = User.objects.create_user(username, email=email, password=password, phone = phone , zip = zip)
             user.save()
 
         except IntegrityError:
@@ -71,7 +70,7 @@ def register(request):
         login(request, user)
         return HttpResponseRedirect(reverse("index"))
     else:
-        return render(request, "auctions/register.html")
+        return render(request,  "auctions/login.html")
 
 
 # ======================================================================================================================
@@ -87,8 +86,6 @@ def insert(request):
     form = AuctionListingForm(request.POST)
     if form.is_valid():
         auction = AuctionListing(user=request.user, **form.cleaned_data)
-        if not auction.image_url:
-            auction.image_url = 'https://user-images.githubusercontent.com/52632898/161646398-6d49eca9-267f-4eab-a5a7-6ba6069d21df.png'
         auction.save()
         starting_bid = auction.starting_bid
         bid = Bid(amount=starting_bid, user=request.user, auction=auction)
@@ -200,3 +197,104 @@ def add_comment(request, id):
         return render(request, 'auctions/login.html', {
             'message': 'Must be logged in to be able to comment!'
         })
+
+from django.db import connection
+from django.shortcuts import render, redirect
+
+@login_required
+def delete_account(request):
+    if request.method == 'POST':
+        # Optional: Add additional confirmation logic here
+        user = request.user
+        user.delete()  # Delete the user account
+        connection.cursor().execute("DELETE FROM django_migrations;")  # Flush the database
+        logout(request)  # Logout the user
+        return redirect('index')  # Redirect to the home page after successful deletion
+
+    return render(request, 'index.html')
+
+
+from django.shortcuts import render, redirect
+from .forms import UserProfileUpdateForm
+
+def update_avatar(request):
+    if request.method == 'POST':
+        form = UserProfileUpdateForm(request.POST, request.FILES, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('user_profile')
+    else:
+        form = UserProfileUpdateForm(instance=request.user)
+    
+    return render(request, 'avatar_update.html', {'form': form})
+
+
+# auctions/views.py
+from django.contrib import messages
+from .forms import UpdateUserForm
+
+def update_user_details(request):
+    if request.method == 'POST':
+        form = UpdateUserForm(request.POST)
+        if form.is_valid():
+            # Update user details here
+            user = request.user
+            user.username = form.cleaned_data['new_name'] or user.username
+            user.zip = form.cleaned_data['zip_code'] or user.zip
+            user.phone = form.cleaned_data['new_phone_number'] or user.phone
+            user.email = form.cleaned_data['new_email'] or user.email
+            user.save()
+
+            messages.success(request, 'User details updated successfully.')
+            return redirect('user_profile')
+    else:
+        form = UpdateUserForm()
+
+    return render(request, 'update_user_details.html', {'form': form})
+
+
+
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
+
+from .forms import UpdateUserForm, UpdatePasswordForm
+
+def update_user_password(request):
+    if request.method == 'POST':
+        form = UpdatePasswordForm(request.POST)
+        if form.is_valid():
+            user = request.user
+            current_password = form.cleaned_data['current_password']
+            new_password = form.cleaned_data['new_password']
+            confirm_password = form.cleaned_data['confirm_password']
+
+            # Check if the current password is valid
+            if not user.check_password(current_password):
+                messages.error(request, 'Invalid current password.')
+                return redirect('user_profile')
+
+            # Check if the new password and confirmation match
+            if new_password != confirm_password:
+                messages.error(request, 'New password and confirmation do not match.')
+                return redirect('user_profile')
+
+            # Update the user's password
+            user.set_password(new_password)
+            user.save()
+
+            # Update the session to reflect the password change
+            update_session_auth_hash(request, user)
+
+            messages.success(request, 'Password updated successfully.')
+            return redirect('user_profile')
+    else:
+        form = UpdatePasswordForm()
+
+    return render(request, 'user.html', {'password_form': form})
+
+# auctions/views.py
+
+
+def payment_page(request):
+    # Any additional logic you need
+    return render(request, 'auctions/Payment page.html')
