@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f4f4f4;
+        }
+        .container {
+            background-color: #fff;
+            margin-top: 200px;
+            border-radius: 5px;
+            box-shadow: 10 100 10px rgba(0, 0, 0, 0.1);
+            
+        }
+        .user-profile {
+            text-align: center;
+        }
+        .user-avatar {
+            margin-top: 20px;
+        }
+        .user-avatar img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+        }
+        .user-info {
+            padding: 20px;
+        }
+        .user-info h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .user-info p {
+            font-size: 18px;
+        }
+        .user-actions {
+            text-align: center;
+            padding: 20px;
+        }
+        .user-actions .btn {
+            margin-right: 10px;
+        }
+        .output {
+            display: none;
+            padding: 20px;
+        }
+        .modal-content {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        /* Center-align buttons and match input box sizes */
+        #change-details-section .btn,
+        #change-password-section .btn {
+            display: block;
+            margin: 10px auto;
+        }
+  /* Center-align buttons in the modal footer */
+.modal-footer {
+    text-align: center;
+    margin: 10px auto;
+    display: block;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="user-profile">
+            <!-- user.html -->
+            <div class="user-avatar">
+                <a href="{% url 'update_avatar' %}">
+                    {% if user.avatar %}
+                        <img src="{{ user.avatar.url }}" alt="User Avatar">
+                    {% else %}
+                        <img src="https://static.vecteezy.com/system/resources/previews/007/033/146/non_2x/profile-icon-login-head-icon-vector.jpg" alt="Default Avatar">
+                    {% endif %}
+                </a>
+            </div>
+
+            <div class="user-info">
+                {% if user.is_authenticated %}
+                    <h1>{{ user.username }}</h1>
+                    <p>Email: {{ user.email }}</p>
+                    <p>Telephone: {{ user.phone }}</p>  <!-- Assuming phone is a field in your User model -->
+                    <p>Postal code: {{ user.zip }}</p>  <!-- Replace 'location' with the actual field in your User model -->
+                    <p>Member Since: {{ user.date_joined|date:"F j, Y" }}</p>
+                {% else %}
+                    <h1>Guest</h1>
+                    <p>Email: N/A</p>
+                    <p>Telephone: N/A</p>
+                    <p>Location: N/A</p>
+                    <p>Member Since: N/A</p>
+                {% endif %}
+            </div>
+        </div>
+        
+        </div>
+        <div class="user-actions">
+            <a class="btn btn-outline-primary" href="{% url 'watchlist' %}" id="favorites">Favorites</a>
+            <a class="btn btn-outline-secondary"  href="{% url 'index' %}" id="my-orders">My Listing</a>
+            <button class="btn btn-outline-dark" id="profile-settings" data-toggle="modal" data-target="#profileModal">Profile Settings</button> <br>
+            <br>
+            <br>
+            {% if user.is_authenticated %}
+                <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-outline-danger" id="logout">Log Out</button>
+                </form>
+            {% else %}
+            <a href="/auctions/login"class="btn btn-primary py-3 px-5 animated slideInDown">Sign in<i class="fa fa-arrow-right ms-3"></i></a>
+            {% endif %}
+        </div>
+        
+        <div class="output" id="output">
+            <!-- Output content will be displayed here -->
+        </div>
+    </div>
+
+    <!-- Profile Settings Modal -->
+    <div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="profileModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="profileModalLabel">Profile Settings</h5>
+                    </button>
+                    
+                </div>
+                <div class="modal-body">
+                    <!-- Change Details Section -->
+                    <div id="change-details-section">
+                        {% block content %}
+                            <div id="change-details-section">
+                                <form method="post" action="{% url 'update_user_details' %}">
+                                    {% csrf_token %}
+                                    {{ form.as_p }}
+                                </form>
+                            </div>
+                        {% endblock %}
+                    
+                        <a class="btn btn-outline-primary" href="{% url 'update_user_details' %}" id="change-details-link">Change Profile Data</a>
+                    </div>                    
+
+                </div>
+                <div class="modal-footer">
+                    <form method="post" action="{% url 'delete_account' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Delete my account</button>
+                    </form>                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
