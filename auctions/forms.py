@@ -1,4 +1,10 @@
 from django import forms
+from .models import *
+
+class UserProfileUpdateForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['avatar']
 
 
 class AuctionListingForm(forms.Form):
@@ -161,7 +167,6 @@ class AuctionListingForm(forms.Form):
     image_url = forms.URLField(
         label='Image URL',
         required=False,
-        initial='https://user-images.githubusercontent.com/52632898/161646398-6d49eca9-267f-4eab-a5a7-6ba6069d21df.png',
         widget=forms.TextInput(attrs={
             'class': 'form-control form-group',
             'placeholder': 'Image URL (optional)',
@@ -199,3 +204,15 @@ class CommentForm(forms.Form):
         if len(text) > 0:
             return text
         return self.errors
+
+
+class UpdateUserForm(forms.Form):
+    new_name = forms.CharField(label='New Username', required=False)
+    zip_code = forms.CharField(label='Zip Code', required=False)
+    new_phone_number = forms.CharField(label='New Phone Number', required=False)
+    new_email = forms.EmailField(label='New Email', required=False)
+
+class UpdatePasswordForm(forms.Form):
+    current_password = forms.CharField(label='Current Password', widget=forms.PasswordInput)
+    new_password = forms.CharField(label='New Password', widget=forms.PasswordInput)
+    confirm_password = forms.CharField(label='Confirm Password', widget=forms.PasswordInput)
