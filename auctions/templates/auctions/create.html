@@ -1,11 +1,20 @@
 {% extends "auctions/layout.html" %}
 
 {% block body %}
-    <h2>Create Listing</h2> <br>
-    <form action="{% url 'insert' %}" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <br>
-        <input class="btn btn-primary" type="submit" value="Create">
-    </form>
+    <div class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+        <div class="card w-50">
+            <div class="card-body">
+                <h2 class="card-title text-center">Create Listing</h2>
+                <br>
+                <form action="{% url 'insert' %}" method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <br>
+                    <div class="d-flex justify-content-center align-items-center">
+                    <input class="btn btn-primary " type="submit" value="Create">
+                </form>
+            </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
