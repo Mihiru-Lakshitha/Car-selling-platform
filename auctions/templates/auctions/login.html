@@ -33,10 +33,6 @@
         <div class="col align-items-center flex-col sign-up">
             <div class="form-wrapper align-items-center">
                 <div class="form sign-up">
-                    <!-- Inside your form tag in login.html -->
-                    {% if message %}
-                        <div>{{ message }}</div>
-                    {% endif %}
             
                     <form action="{% url 'register' %}" method="post">
                         {% csrf_token %}
@@ -120,7 +116,7 @@
                     </form>
                     <p>
                         <b>
-                            Forgot password?
+                            <p class="mt-3">Forgot password? <a href="{% url 'update_user_details' %}">Reset it here</a>.</p>
                         </b>
                     </p>
                     <p>
