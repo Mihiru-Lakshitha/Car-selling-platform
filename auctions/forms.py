@@ -1,4 +1,10 @@
 from django import forms
+from .models import *
+
+class UserProfileUpdateForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['avatar']
 
 
 class AuctionListingForm(forms.Form):
@@ -7,7 +13,7 @@ class AuctionListingForm(forms.Form):
         required=True,
         widget=forms.TextInput(attrs={
             'class': 'form-control form-group',
-            'placeholder': 'Title'
+            'placeholder': 'Give it a title'
         }
         )
     )
@@ -19,7 +25,7 @@ class AuctionListingForm(forms.Form):
         widget=forms.TextInput(attrs={
             'class': 'form-control form-group',
             'autocomplete': 'on',
-            'placeholder': 'Category'
+            'placeholder': 'Category (optional)'
         }
         )
     )
@@ -30,7 +36,7 @@ class AuctionListingForm(forms.Form):
         widget=forms.TextInput(attrs={
             'class': 'form-control form-group',
             'autocomplete': 'on',
-            'placeholder': 'Brand'
+            'placeholder': 'Category (optional)'
         }
         )
     )
@@ -41,145 +47,119 @@ class AuctionListingForm(forms.Form):
         widget=forms.TextInput(attrs={
             'class': 'form-control form-group',
             'autocomplete': 'on',
-            'placeholder': 'Model'
+            'placeholder': 'Category (optional)'
         }
         )
     )
+    # Additional Fields
     edition = forms.CharField(
         label='Edition',
         required=False,
         widget=forms.TextInput(attrs={
             'class': 'form-control form-group',
-            'placeholder': 'Edition'
+            'placeholder': 'Edition (optional)'
         }
         )
     )
-    year = forms.CharField(
+    year = forms.IntegerField(
         label='Year',
         required=False,
-        widget=forms.TextInput(attrs={
+        widget=forms.NumberInput(attrs={
             'class': 'form-control form-group',
-            'placeholder': 'Year'
+            'placeholder': 'Year (optional)'
         }
         )
     )
     condition = forms.CharField(
-    label='Condition',
-    required=False,
-    widget=forms.Select(choices=[
-        ('Select condition', 'Select condition'),
-        ('Brand new', 'Brand new'),
-        ('Recondition', 'Recondition'),
-        ('Second Hand', 'Second Hand'),
-    ], attrs={
-        'class': 'form-control form-group',
-    })
-)
-
-    no_of_owners = forms.CharField(
-        label='Number of Owners',
+        label='Condition',
         required=False,
         widget=forms.TextInput(attrs={
             'class': 'form-control form-group',
-            'placeholder': 'Number of Owners'
+            'placeholder': 'Condition (optional)'
+        }
+        )
+    )
+    no_of_owners = forms.IntegerField(
+        label='Number of Owners',
+        required=False,
+        widget=forms.NumberInput(attrs={
+            'class': 'form-control form-group',
+            'placeholder': 'Number of Owners (optional)'
         }
         )
     )
     transmission = forms.CharField(
-    label='Transmission',
-    required=False,
-    widget=forms.Select(choices=[
-        ('Select Transmission','Select Transmission'),
-        ('Auto', 'Auto'),
-        ('Manual', 'Manual'),
-        ('Both', 'Both'),
-    ],attrs={
-        'class': 'form-control form-group',
-    })
-)
-    engine_capacity = forms.CharField(
+        label='Transmission',
+        required=False,
+        widget=forms.TextInput(attrs={
+            'class': 'form-control form-group',
+            'placeholder': 'Transmission (optional)'
+        }
+        )
+    )
+    engine_capacity = forms.DecimalField(
         label='Engine Capacity',
         required=False,
-        widget=forms.TextInput(attrs={
+        widget=forms.NumberInput(attrs={
             'class': 'form-control form-group',
-            'placeholder': 'Engine Capacity',
+            'placeholder': 'Engine Capacity (optional)',
+            'min': '0.1',
+            'max': '999.9',
+            'step': '0.1'
         }
         )
     )
-
-    fuelType = forms.CharField(
-    label='Fuel Type',
-    required= False,
-    widget=forms.Select(choices=[
-    ('Select Fuel Type','Select Fuel Type'),
-    ('Petrol', 'Petrol'),
-    ('Diesel', 'Diesel'),
-    ('Electric', 'Electric'),
-    ('Hybrid', 'Hybrid'),
-    ],attrs={
-        'class': 'form-control form-group',
-    })
+    fuel_type = forms.CharField(
+        label='Fuel Type',
+        required=False,
+        widget=forms.TextInput(attrs={
+            'class': 'form-control form-group',
+            'placeholder': 'Fuel Type (optional)'
+        }
+        )
     )
-    weight = forms.CharField(
+    weight = forms.DecimalField(
         label='Weight',
         required=False,
-        widget=forms.TextInput(attrs={
+        widget=forms.NumberInput(attrs={
             'class': 'form-control form-group',
-            'placeholder': 'Weight',
+            'placeholder': 'Weight (optional)',
+            'min': '1',
+            'max': '99999',
+            'step': '1'
         }
         )
     )
-    mileage = forms.CharField(
+    mileage = forms.DecimalField(
         label='Mileage',
         required=False,
-        widget=forms.TextInput(attrs={
+        widget=forms.NumberInput(attrs={
             'class': 'form-control form-group',
-            'placeholder': 'Mileage',
+            'placeholder': 'Mileage (optional)',
+            'min': '0.01',
+            'max': '999999.99',
+            'step': '0.01'
         }
         )
     )
     district = forms.CharField(
         label='District',
         required=False,
-        widget=forms.Select(choices=[
-        ('Select District','Select District'),
-        ('Colombo', 'Colombo'),
-        ('Gampaha', 'Gampaha'),
-        ('Kalutara', 'Kalutara'),
-        ('Kandy', 'Kandy'),
-        ('Matale', 'Matale'),
-        ('Nuwara Eliya', 'Nuwara Eliya'),
-        ('Galle', 'Galle'),
-        ('Matara', 'Matara'),
-        ('Hambantota', 'Hambantota'),
-        ('Jaffna', 'Jaffna'),
-        ('Kilinochchi', 'Kilinochchi'),
-        ('Mannar', 'Mannar'),
-        ('Vavuniya', 'Vavuniya'),
-        ('Mullaitivu', 'Mullaitivu'),
-        ('Batticaloa', 'Batticaloa'),
-        ('Ampara', 'Ampara'),
-        ('Trincomalee', 'Trincomalee'),
-        ('Kurunegala', 'Kurunegala'),
-        ('Puttalam', 'Puttalam'),
-        ('Anuradhapura', 'Anuradhapura'),
-        ('Polonnaruwa', 'Polonnaruwa'),
-        ('Badulla', 'Badulla'),
-        ('Moneragala', 'Moneragala'),
-        ('Ratnapura', 'Ratnapura'),
-        ('Kegalle', 'Kegalle'),
-            
-        ],attrs={
+        widget=forms.TextInput(attrs={
             'class': 'form-control form-group',
+            'placeholder': 'District (optional)'
         }
         )
     )
-    starting_bid = forms.CharField(
+    starting_bid = forms.DecimalField(
         label='Starting Bid',
         required=True,
-        widget=forms.TextInput(attrs={
+        widget=forms.NumberInput(attrs={
             'class': 'form-control form-group',
             'placeholder': 'Starting bid',
+            'min': '0.01',
+            'max': '99999999999.99',
+            'step': '0.01'
         }
         )
     )
@@ -189,7 +169,7 @@ class AuctionListingForm(forms.Form):
         required=False,
         widget=forms.TextInput(attrs={
             'class': 'form-control form-group',
-            'placeholder': 'Upload your vehicle image to Google Drive and paste the link',
+            'placeholder': 'Image URL (optional)',
         }
         )
     )
@@ -224,3 +204,15 @@ class CommentForm(forms.Form):
         if len(text) > 0:
             return text
         return self.errors
+
+
+class UpdateUserForm(forms.Form):
+    new_name = forms.CharField(label='New Username', required=False)
+    zip_code = forms.CharField(label='Zip Code', required=False)
+    new_phone_number = forms.CharField(label='New Phone Number', required=False)
+    new_email = forms.EmailField(label='New Email', required=False)
+
+class UpdatePasswordForm(forms.Form):
+    current_password = forms.CharField(label='Current Password', widget=forms.PasswordInput)
+    new_password = forms.CharField(label='New Password', widget=forms.PasswordInput)
+    confirm_password = forms.CharField(label='Confirm Password', widget=forms.PasswordInput)
