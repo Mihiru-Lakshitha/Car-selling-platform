@@ -102,9 +102,13 @@
         <div class="pl-4 pt-3">
             {% if auction.winner is not None %}
                 {% if user == bid.user %}
-                    <h4 class="display-2 pb-5 text-success" align="center">Congratulations, you are the winner!</h4>
+                <h1 align="center" style="color: rgb(15, 190, 15);">Congratulations, you are the winner!</h1>
+
+                    <br>
                 {% else %}
-                    <h4 class="display-2 pb-5 text-info" align="center">You did not win this auction.</h4>
+                    {% if not auction.user == user %}
+                    <h1 align="center" style="color: rgb(190, 15, 15);">You did not win this auction.</h1>
+                    {% endif %}
                 {% endif %}
             {% endif %}
 
@@ -170,6 +174,7 @@
             <form action="{% url 'update_bid' bid.id %}" method="POST">
                 {% csrf_token %}
                 <div class="input-group mb-3">
+                    
                     {% if auction.winner is not None %}
                     {% if bid.user == user %}
                     <div class="input-group-prepend">
@@ -186,13 +191,24 @@
                     {% endif %}
                     {% else %}
                     <div class="input-group-prepend">
-                        <button class="btn btn-outline-secondary bg-info text-light" type="submit">Bid Now!</button>
+                        <button class="btn btn-outline-secondary bg-danger text-light" type="submit">Bid Now!</button>
                     </div>
                     <input required type="number" min="{{ bid.amount }}" step="0.01" max="99999999999.99"
                         class="form-control" name="bid" placeholder="Current Bid: ${{ bid.amount }}">
                     {% endif %}
                 </div>
             </form>
+            <form method="post" action="{% url 'predict_price' %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn btn-outline-secondary bg-danger text-light" type ="submit">Predict Price</button>
+            </form>
+
+            {% if price_prediction %}
+                <h2>Predicted Price: ${{ price_prediction }}</h2>
+            {% endif %}
+            
+            
             {% else %}
             <form action="{% url 'close_bid' bid.id %}" method="POST">
                 {% csrf_token %}
@@ -222,7 +238,7 @@
             <form action="{% url 'add_comment' auction.id %}" class="form-group" method="POST">
                 {% csrf_token %}
                 {{ comment_form }}
-                <input class="btn btn-lg btn-outline-secondary" type="submit" value="Add Comment">
+                <input class="btn btn-sm btn-outline-secondary" type="submit" value="Add Comment">
             </form>
             <hr>
         </div>
@@ -230,18 +246,97 @@
         {% for comment in comments %}
         <div class="card mb-3">
             <div class="card-header">
+                <div class="user-avatar">
+                    {% if comment.user == user %}
+                    <a href="{% url 'user_profile' %}">
+                        {% if user.avatar %}
+                            <img src="{{ user.avatar.url }}" alt="User Avatar" class="avatar-image">
+                        {% else %}
+                            <img src="https://static.vecteezy.com/system/resources/previews/007/033/146/non_2x/profile-icon-login-head-icon-vector.jpg" alt="Default Avatar" class="avatar-image">
+                        {% endif %}
+                    {% endif %}
+                    </a>
+                </div>
+
                 <p class="h5 text-muted">{{ comment.user }} - <span class="text-muted lead">{{ comment.created_at }}</span>
                 </p>
+
             </div>
+
             <div class="card-body">
                 <p class="card-text lead">{{ comment.text }}</p>
             </div>
         </div>
         {% empty %}
-        <p class="display-4 pb-5 ml-3">No comments for this auction yet.</p>
+        <p class="h5 text-muted">No comments for this auction yet.</p>
         {% endfor %}
     </div>
     {% endblock %}
+
+
+<!-- Footer Start -->
+<div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-lg-3 col-md-6">
+                <h4 class="text-light mb-4">Contact Information</h4>
+                <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Car Mart Street, Colombo, Sri Lanka</p>
+                <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+94 123 456789</p>
+                <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@carmart.lk</p>
+                <div class="d-flex pt-2">
+                    <a class="btn btn-outline-light btn-social" href="#"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-outline-light btn-social" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-light btn-social" href="#"><i class="fab fa-youtube"></i></a>
+                    <a class="btn btn-outline-light btn-social" href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h4 class="text-light mb-4">Operating Hours</h4>
+                <h6 class="text-light">Monday - Friday:</h6>
+                <p class="mb-4">09.00 AM - 09.00 PM</p>
+                <h6 class="text-light">Saturday - Sunday:</h6>
+                <p class="mb-0">09.00 AM - 12.00 PM</p>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <h4 class="text-light mb-4">Explore Our Services</h4>
+                <a class="btn btn-link" href="#">Browse Auctions</a>
+                <a class="btn btn-link" href="#">Sell Your Car</a>
+                <a class="btn btn-link" href="#">Car Inspections</a>
+                <a class="btn btn-link" href="#">Support Center</a>
+                <a class="btn btn-link" href="#">FAQs</a>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h4 class="text-light mb-4">Newsletter</h4>
+                <p>Stay updated with the latest car auctions and news.</p>
+                <div class="position-relative mx-auto" style="max-width: 400px;">
+                    <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
+                    <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">Subscribe</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="copyright">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    &copy; <a class="border-bottom" href="#">Car Mart Lanka</a>, All Rights Reserved.
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <div class="footer-menu">
+                        <a href="#">Home</a>
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->
+</html>
+
 </body>
 
 </html>
