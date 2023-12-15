@@ -9,6 +9,7 @@ urlpatterns = [
     path("", HomeView.as_view(), name='default_home'),  # Set the default URL to the home page
     path("auctions/", include("auctions.urls")),
     path("home/", include("home.urls")),
+    path('auctions/', include('car_prediction.urls')),
 ]
 
 
