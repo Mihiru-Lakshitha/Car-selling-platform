@@ -75,18 +75,28 @@
                         </div>
 
                         <!-- Submit Button -->
-                        <div class="input-group">
-                            <input class="btn btn-primary" type="submit" value="Register">
-                        </div>
+                        <button type="submit" class="pointer">Register</button>
+                        <br>
+
+                        <h5> Password Requirments</h5>
+                        <p> Minimum Length: Password must be at least 8 characters long. <br>
+                            Uppercase Letter: Password must contain at least one uppercase letter. <br>
+                            Digit: Password must contain at least one digit. <br>
+                            Symbol: Password must contain at least one special symbol
+                        </p>
                     </form>
 
                     <p>
                         <span>
                             Already have an account?
+                            <br>
                         </span>
+                        
                         <b onclick="toggle()" class="pointer">
-                            Sign in here
+                            <h3> Sign in here </h3>
                         </b>
+                        
+                        
                     </p>
                 </div>
             </div>
@@ -111,8 +121,8 @@
                             <input class="form-control" type="password" name="password" placeholder="Password" required>
                         </div>
                         <div class="input-group">
-                            <input class="btn btn-primary" type="submit" value="Login">
-                        </div>
+                            <button class="btn btn-primary" type="submit">Login</button>
+                        </div>                        
                     </form>
                     <p>
                         <b>
@@ -124,7 +134,7 @@
                             Don't have an account?
                         </span>
                         <b onclick="toggle()" class="pointer">
-                            Sign up here
+                            <h3>Sign up here</h3>
                         </b>
                     </p>
                     {% if error_message %}
