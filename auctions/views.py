@@ -43,6 +43,8 @@ def logout_view(request):
     return HttpResponseRedirect(reverse("index"))
 
 
+import re
+
 def register(request):
     if request.method == "POST":
         username = request.POST["username"]
@@ -58,19 +60,32 @@ def register(request):
                 "message": "Passwords must match."
             })
 
-        # Attempt to create new user
+        # Check password requirements
+        if (
+            len(password) < 8 or                # Minimum length is 8
+            not any(char.isupper() for char in password) or  # At least one uppercase letter
+            not any(char.isdigit() for char in password) or  # At least one digit
+            not re.search(r"[!@#$%^&*(),.?\":{}|<>]", password)  # At least one symbol
+        ):
+            return render(request, "auctions/login.html", {
+                "message": "Password does not meet the requirements. Sign up Again ! "
+            })
+
+        # Attempt to create a new user
         try:
-            user = User.objects.create_user(username, email=email, password=password, phone = phone , zip = zip)
+            user = User.objects.create_user(username, email=email, password=password, phone=phone, zip=zip)
             user.save()
 
         except IntegrityError:
-            return render(request, "auctions/register.html", {
+            return render(request, "auctions/login.html", {
                 "message": "Username already taken."
             })
+
         login(request, user)
         return HttpResponseRedirect(reverse("index"))
     else:
-        return render(request,  "auctions/login.html")
+        return render(request, "auctions/login.html")
+
 
 
 # ======================================================================================================================
