@@ -1,9 +1,31 @@
 {% extends "auctions/layout.html" %}
+{% load static %}
 
 {% block body %}
-    <div class="container mt-4">
-        <h2 class="text-center mb-4 text-primary">Active Listings</h2>
 
+
+
+    <!-- Carousel Start -->
+    <div class="container-fluid p-0 mb-5">
+        <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="w-100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTu3TIGoVr145PwmLObkmheVuw0t06Cy6A_Ew&usqp=CAU" alt="Image" style="width: 2400px; height: 300px;">
+                    <div class="carousel-caption d-flex align-items-center">
+                        <div class="container">
+                            <div class="row align-items-center justify-content-center justify-content-lg-start">
+                                <div class="col-10 col-lg-7 text-center text-lg-start"> 
+                                    <h1 class="display-3 text-white mb-4 pb-3 animated slideInDown">Active Listings</h1> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-4">
         <div class="row">
             {% for item in listings %}
                 <div class="col-md-6 col-lg-4 mb-4">
@@ -20,8 +42,8 @@
                             {% else %}
                                 <p class="card-text text-muted mb-1"><small>Category: Not listed</small></p>
                             {% endif %}
-                            {% if item.price %}
-                                <p class="card-text text-success mb-2"><strong>Price: ${{ item.price }}</strong></p>
+                            {% if item.starting_bid %}
+                                <p class="card-text text-success mb-2"><strong>Price: ${{ item.starting_bid }}</strong></p>
                             {% else %}
                                 <p class="card-text text-danger mb-2"><strong>Price: Not specified</strong></p>
                             {% endif %}
